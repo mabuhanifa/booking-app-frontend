@@ -4,6 +4,7 @@ import { DateRange } from "react-date-range";
 import { useLocation } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
+import SearchItems from "../../components/searchItem/SearchItems";
 import "./list.css";
 const List = () => {
   const location = useLocation();
@@ -83,7 +84,13 @@ const List = () => {
             </div>
             <button>Search</button>
           </div>
-          <div className="listResult"></div>
+          <div className="listResult">
+            <SearchItems/>
+            <SearchItems/>
+            <SearchItems/>
+            <SearchItems/>
+            <SearchItems/>
+          </div>
         </div>
       </div>
     </div>
