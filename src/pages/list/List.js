@@ -10,19 +10,16 @@ import "./list.css";
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
-  console.log(dates);
+  const [dates, setDates] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `http://localhost:5000/api/hotels?city=${destination}&min=${min || 0}&max=${
-      max || 999
-    }`
+    `http://localhost:5000/api/hotels?hotels?city=${destination}&min=${min ||0}&max=${max || 1000}`
   );
-
+  console.log(data, min, max);
   const handleClick = () => {
     reFetch();
   };
