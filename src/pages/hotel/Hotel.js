@@ -28,6 +28,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const { user } = useContext(AuthContext);
+
   const handleOpen = (i) => {
     setSlideNumber(i);
     setOpen(true);
@@ -135,7 +136,7 @@ const Hotel = () => {
                     <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                     nights)
                   </h2>
-                  <button onclick={handleClick}>Reserve or Book Now!</button>
+                  <button onClick={handleClick}>Reserve or Book Now!</button>
                 </div>
               </div>
             </div>
@@ -145,7 +146,7 @@ const Hotel = () => {
         </>
       )}
 
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} key={id} />}
     </div>
   );
 };
