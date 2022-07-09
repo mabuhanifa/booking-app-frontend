@@ -9,6 +9,7 @@ import "./reserve.css";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
+
   const { data, loading, error } = useFetch(
     `http://localhost:5000/api/hotels/room/${hotelId}`
   );
@@ -29,7 +30,9 @@ const Reserve = ({ setOpen, hotelId }) => {
 
     return dates;
   };
+
   const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
+
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       alldates.includes(new Date(date).getTime())
@@ -88,12 +91,13 @@ const Reserve = ({ setOpen, hotelId }) => {
             <div className="rSelectRooms">
               {item.roomNumbers.map((roomNumber) => (
                 <div className="room">
-                  <label>{roomNumber.number}</label>
+                  <label className="check">{roomNumber.number}</label>
                   <input
                     type="checkbox"
                     value={roomNumber._id}
                     onChange={handleSelect}
                     disabled={!isAvailable(roomNumber)}
+                    className="checkbox"
                   />
                 </div>
               ))}
