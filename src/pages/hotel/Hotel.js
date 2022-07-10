@@ -20,7 +20,7 @@ const Hotel = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
- 
+
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:5000/api/hotels/find/${id}`
   );
